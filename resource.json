@@ -73,6 +73,15 @@
       "Korean"
     ],
     "queries": [
+      "ICU nested plural placeholder localization validation 번역 변수 검사"
+    ],
+    "scope": "Primary documentation and repository descriptions were read on the public web. Competitor code, plugins and packaged execution were not exhaustively tested. This is a bounded prior-art review, not a worldwide novelty search.",
+    "limitations": [
+      "Search results and documentation do not establish universal absence.",
+      "Competitor configuration/plugin parity is not exhausted.",
+      "No independent end-user interview or deployment evidence."
+    ],
+    "proposed_queries": [
       "ICU localization gate",
       "localization contract",
       "번역문의 중첩 ICU 인자·선택·복수형·보호 토큰 누락을 검사한다.",
@@ -80,12 +89,7 @@
       "localization-auditor",
       "formatjs"
     ],
-    "scope": "Primary documentation and repository descriptions were read on the public web. Competitor code, plugins and packaged execution were not exhaustively tested. This is a bounded prior-art review, not a worldwide novelty search.",
-    "limitations": [
-      "Search results and documentation do not establish universal absence.",
-      "Competitor configuration/plugin parity is not exhausted.",
-      "No independent end-user interview or deployment evidence."
-    ]
+    "query_scope": "One actual bilingual search per resource, grouped in shared cached batches; additional suggested terms are explicitly proposed, not executed."
   },
   "checked_at": "2026-10-24",
   "distinctive_capability": "A bounded nested MessageFormat parser rather than a flat placeholder regex. An offline executable can be called by a small model and checked against an explicit task contract.",
@@ -111,7 +115,8 @@
   "validation_results": {
     "worked_cases": 1,
     "evaluation_cases": 1,
-    "root_required_field_rejection": true
+    "root_required_field_rejection": true,
+    "fixture_role": "Development regression fixtures; not an untouched final model evaluation set."
   },
   "external_impact_evidence": [],
   "decision": {

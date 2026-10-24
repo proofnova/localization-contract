@@ -17,7 +17,7 @@ Problem: 번역문의 중첩 ICU 인자·선택·복수형·보호 토큰 누락
 
 1. Same functionality already exists? Yes, underlying domain operations are established. An existing public catalog auditor describes overlapping nested ICU checks.
 2. Existing configuration enough? Plausibly; no exhaustive plugin/configuration execution was completed. Check the nearest tool before expanding this prototype.
-3. Another name? Search terms include ICU localization gate; localization contract; 번역문의 중첩 ICU 인자·선택·복수형·보호 토큰 누락을 검사한다.; icu; localization-auditor; formatjs. Existing algorithm names appear in the method above.
+3. Another name? Search terms include ICU nested plural placeholder localization validation 번역 변수 검사. Existing algorithm names appear in the method above.
 4. Important user difference? Fewer runtime dependencies and a validated tool boundary are concrete; actual adoption and time savings remain unmeasured.
 5. Added complexity? Structured JSON is a real setup cost. A browser example and exact field errors reduce it, but do not erase it.
 6. Retraction evidence? An existing setup with the same access/contract or a failed invariant/performance comparison removes the claimed practical advantage.

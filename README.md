@@ -1,10 +1,16 @@
 # ICU localization gate
 
-번역문의 중첩 ICU 인자·선택·복수형·보호 토큰 누락을 검사한다.
+<a href="README.md"><kbd><strong>English</strong></kbd></a> <a href="README.ko.md"><kbd>한국어</kbd></a> <a href="README.ja.md"><kbd>日本語</kbd></a> <a href="README.zh-CN.md"><kbd>简体中文</kbd></a>
 
-A focused executable resource for AI-assisted structured work. **Zero runtime dependencies, no API key, Node.js 22+.**
+**Validate nested ICU message arguments, selectors, plural branches and protected tokens across translations.**
 
-[Live workspace](https://proofnova.github.io/localization-contract/) · [한국어 리소스 모음](https://proofnova.github.io/) · [Task contract](resource.json) · [Prior art](RESEARCH.md)
+An executable resource for AI-assisted structured work. Runs locally with **zero runtime dependencies, no API key and no account**.
+
+[Open the workspace](https://proofnova.github.io/localization-contract/) · [Explore all resources](https://proofnova.github.io/) · [Task contract](resource.json) · [Alternatives and research](RESEARCH.md)
+
+## Quick start
+
+Requires Node.js 22 or later. No package installation is needed.
 
 ```sh
 git clone https://github.com/proofnova/localization-contract.git
@@ -15,24 +21,49 @@ node cli.mjs example.json
 
 ## What it does
 
-A bounded nested MessageFormat parser rather than a flat placeholder regex.
+Validate nested ICU message arguments, selectors, plural branches and protected tokens across translations.
 
-Nested plurals and quoted literal braces must not be mistaken for missing or extra arguments.
+**Implementation:** A bounded nested MessageFormat parser rather than a flat placeholder regex.
 
-## Connect a model
+**Task-specific recovery:** Repair the exact missing argument/category/brace; semantic translation review remains separate.
 
-Import `execute` from `./run.mjs`. Expose this declared tool to your model, validate its tool name/input contract, execute it, and retain the returned JSON and input digest. Calculations and constraint checks are performed by the resource. No paid model or new agent framework is required.
+### Required input fields
 
-[SKILL.md](SKILL.md) contains the workflow, interpretation and recovery procedure. [example.json](example.json) is a complete input; [cases.json](cases.json) contains worked and edge-case synthetic regression checks. The website executes the same code locally in a bounded Worker. It has no model or external data upload.
+`source` · `target`
 
-## Recovery and limits
+Field names are part of the API contract and stay unchanged in every language. See [example.json](example.json) for a complete input and [cases.json](cases.json) for normal and edge cases.
 
-Repair the exact missing argument/category/brace; semantic translation review remains separate.
+### Worked example
 
-Underlying algorithms and task outcomes already exist in the alternatives. An existing public catalog auditor describes overlapping nested ICU checks. Small synthetic tests cannot establish broad expertise or external demand. See [RESEARCH.md](RESEARCH.md). A plan/audit is not an external action or proof of actual user benefit.
+```json
+{
+  "messages": 1,
+  "checked": 1,
+  "findings": 0,
+  "valid": true
+}
+```
+
+These values come from the included synthetic example. They are not model-performance or real-user adoption claims.
+
+## Use it with a model
+
+Import `execute` from `./run.mjs`, register it as a declared tool, validate the selected tool and input, and retain the returned JSON and input digest. The user or integration selects the resource. Deterministic code performs the calculation; this does not demonstrate autonomous model reasoning.
+
+The [AI skill](SKILL.md) explains input checks, interpretation and recovery. The browser runs the same calculation locally in a bounded worker and does not upload the input.
+
+## Validation and recovery
+
+The bundled tests cover two synthetic task cases, Node/browser parity, input immutability and rejection of missing input. Run `npm test` after any change.
+
+Inspect held, rejected or infeasible items before using the result. Correct the input or declared constraints and rerun; do not treat an unresolved case as success. Exact rules and task-specific limits are in the task contract and skill.
+
+## Scope and limits
+
+The underlying algorithms and task outcomes have established prior art. Practical differentiation is a hypothesis; an existing configured tool may already be the better choice. Synthetic regression checks do not establish general model expertise or real-world impact. The recorded model comparison covers six synthetic tasks and does not validate all thirty resources. No external users or GitHub Stars membership are implied.
 
 ## Contribute
 
-Open an issue with a synthetic/redacted failing JSON input, expected result and Node version. Add a regression test and run `npm test`. Never include credentials or real private records in public examples.
+Report a reproducible, synthetic or redacted failing input, the expected result and your Node version. Include a regression case and run `npm test`. Keep credentials and private records out of public examples.
 
 MIT · Proofnova · 2026
